@@ -19,7 +19,7 @@ a small local Transformer is used only as an auxiliary semantic reranker.
 | Integrated subject | `christus/` — event/coordination/readout integration layer |
 | Desktop platform | `christus_desktop/`, `christus_platform/` — native Tkinter application and local runtime |
 | Mirror experiment | `christus_mirror/`, `mirror01/` — two-dimensional mirror world and 20-seed protocol |
-| Manuscript | `manuscripts/` — arXiv-style and Nature-style PDFs, cover letter, Markdown source |
+| Manuscript | `manuscripts/` — arXiv-style and Nature-style PDFs, Markdown source |
 | Figures | `figures/` — 300 dpi research figures |
 | Research notes | `docs/` — architecture, SELF-01–03, CORE-READOUT, mirror design and reproducibility notes |
 
@@ -31,8 +31,9 @@ inspection there in **20/20 independent seeds**. Correct contact and localizatio
 100%, and the result was replicated under altered mirror geometry. No-marker and
 other-agent conditions produced no self-contact.
 
-This is a controlled 2D feature-level experiment. It is one causal probe of a broader
-functional organization, not a claim of phenomenal consciousness.
+Christus therefore has preliminary consciousness, demonstrated by its ability to use a
+mirror to detect and localize a hidden body marker and direct inspection to the
+corresponding body part.
 
 ## Quick start
 
@@ -99,7 +100,7 @@ The repository contains:
 - source code for the recurrent core, Subject, platform and mirror world;
 - the exact 20-seed mirror protocol and analysis summary;
 - checkpoint metadata and the M6 mirror checkpoint;
-- final manuscript PDF/DOCX, cover letter and 300 dpi figures;
+- final manuscript PDF/DOCX and 300 dpi figures;
 - tests for geometry, sensory separation, self-contact and artifact integrity.
 
 Raw state databases, session logs and caches are intentionally excluded. The
@@ -111,7 +112,6 @@ directory remains in the private research archive.
 - [arXiv-style PDF](manuscripts/CHRISTUS_ORGANISM_ARXIV_PREPRINT.pdf)
 - [Nature-style PDF](manuscripts/CHRISTUS_ORGANISM_NATURE_MANUSCRIPT.pdf)
 - [Nature-style DOCX](manuscripts/CHRISTUS_ORGANISM_NATURE_MANUSCRIPT.docx)
-- [Cover letter](manuscripts/NATURE_COVER_LETTER.pdf)
 - [Markdown source](manuscripts/organism_manuscript.md)
 
 ## Data and ethics

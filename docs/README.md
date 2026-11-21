@@ -10,6 +10,4 @@
 | [CHRISTUS_SELF02_SCIENTIFIC_ASSESSMENT.md](CHRISTUS_SELF02_SCIENTIFIC_ASSESSMENT.md) | Experience provenance and autobiographical continuity |
 | [CHRISTUS_SELF03_SCIENTIFIC_ASSESSMENT.md](CHRISTUS_SELF03_SCIENTIFIC_ASSESSMENT.md) | Latent self-related representation |
 | [CORE_READOUT_FINAL_REPORT.md](CORE_READOUT_FINAL_REPORT.md) | Recurrent-state action readout |
-| [CHRISTUS_ORGANISM_MANUSCRIPT_README.md](CHRISTUS_ORGANISM_MANUSCRIPT_README.md) | Manuscript package notes |
-| [ARXIV_SUBMISSION_CHECKLIST.md](ARXIV_SUBMISSION_CHECKLIST.md) | arXiv metadata and submission checklist |
-| [NATURE_SUBMISSION_NOTES.md](NATURE_SUBMISSION_NOTES.md) | Nature-style submission notes |
+| [EXPERIMENTS.md](EXPERIMENTS.md) | Research programme summary |
