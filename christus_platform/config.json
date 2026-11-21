@@ -1,0 +1,32 @@
+{
+  "service": "christus-platform",
+  "host": "127.0.0.1",
+  "port": 8765,
+  "subject": {
+    "class": "DataSubject (existing wphr.runtime.Subject + SparseModularCTRN)",
+    "adapter": "CHRISTUS-DATA-01/cognition_adapter/adapter.py",
+    "core_update": false,
+    "persistence": "platform/state/subject"
+  },
+  "language": {
+    "default": "local-state-language-v1",
+    "external_bridge": {
+      "enabled_if": ["CHRISTUS_LLM_BASE_URL", "CHRISTUS_LLM_API_KEY"],
+      "role": "text-only bridge; never writes Subject state"
+    }
+  },
+  "internet": {
+    "providers": ["wikipedia", "duckduckgo"],
+    "timeout_seconds": 8,
+    "default_licenses": ["CC BY-SA 4.0", "source terms apply"],
+    "unbounded_crawl": false
+  },
+  "permissions": {
+    "public_read": true,
+    "send_messages": false,
+    "publish": false,
+    "accounts": false,
+    "payments": false,
+    "private_accounts": false
+  }
+}

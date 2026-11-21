@@ -1,0 +1,54 @@
+{
+  "subject_id": "subj_61033c149f9e459f9abdbb1bbc35b9e1",
+  "step": 9,
+  "turns": 10,
+  "h_norm": 0.884695,
+  "action": "wait",
+  "reward": 0.0,
+  "affect": {
+    "curiosity": 0.440982,
+    "fatigue": 0.057267,
+    "frustration": 0.091277,
+    "relief": 0.10096,
+    "risk_sensitivity": 0.396095,
+    "social_motivation": 0.293184,
+    "stress_load": 0.070634
+  },
+  "memory": {
+    "enabled": true,
+    "semantic_contexts": 2,
+    "semantic_rules": 5,
+    "revisions": 0,
+    "consolidations": 0,
+    "summaries": 0,
+    "working_items": 9,
+    "records_written": 0
+  },
+  "concept": {
+    "steps": 9,
+    "events_seen": 27,
+    "concept_nodes": 2,
+    "interventions": 9,
+    "splits": 0,
+    "revisions": 0,
+    "claims": 0,
+    "productions": 0,
+    "words": 0
+  },
+  "self_model": {
+    "available": true,
+    "mode": "A3 offline checkpoint",
+    "source_probe": 0.5685,
+    "temporal": 0.40704735246775997,
+    "note": "offline SELF-03 model; not on the language path"
+  },
+  "language_source": "local-state-language-v1",
+  "paused": false,
+  "started_at": 1795005797.9253268,
+  "last_checkpoint": {
+    "path": "C:\\Users\\13394\\Documents\\ChatGPT\\论文研究\\CHRISTUS-INTEGRATION-01\\christus_platform\\state\\subject\\storage\\checkpoints\\ckpt_1795005804_00000009_2f9edb3a.npz",
+    "sha256": "da3b135d3cd401be87c183408d2065770097fac6200231d76e0053ee6c43767f"
+  },
+  "core_weights_unchanged": true,
+  "w_p_q_note": "W/P/Q not updated by the platform; DataAdapter only reads core state."
+}

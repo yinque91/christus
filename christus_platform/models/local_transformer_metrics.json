@@ -1,0 +1,175 @@
+{
+  "steps": [
+    {
+      "step": 25,
+      "loss": 3.30885
+    },
+    {
+      "step": 50,
+      "loss": 3.3959
+    },
+    {
+      "step": 75,
+      "loss": 3.77798
+    },
+    {
+      "step": 100,
+      "loss": 3.18397
+    },
+    {
+      "step": 125,
+      "loss": 3.32305
+    },
+    {
+      "step": 150,
+      "loss": 3.85889
+    },
+    {
+      "step": 175,
+      "loss": 3.21898
+    },
+    {
+      "step": 200,
+      "loss": 3.9172
+    },
+    {
+      "step": 225,
+      "loss": 3.63244
+    },
+    {
+      "step": 250,
+      "loss": 3.63029
+    },
+    {
+      "step": 275,
+      "loss": 3.46709
+    },
+    {
+      "step": 300,
+      "loss": 3.42814
+    },
+    {
+      "step": 325,
+      "loss": 3.67484
+    },
+    {
+      "step": 350,
+      "loss": 3.63874
+    },
+    {
+      "step": 375,
+      "loss": 3.14994
+    },
+    {
+      "step": 400,
+      "loss": 3.23488
+    },
+    {
+      "step": 425,
+      "loss": 3.46977
+    },
+    {
+      "step": 450,
+      "loss": 3.06071
+    },
+    {
+      "step": 475,
+      "loss": 3.48405
+    },
+    {
+      "step": 500,
+      "loss": 3.57256
+    },
+    {
+      "step": 525,
+      "loss": 3.68199
+    },
+    {
+      "step": 550,
+      "loss": 3.78973
+    },
+    {
+      "step": 575,
+      "loss": 3.4228
+    },
+    {
+      "step": 600,
+      "loss": 3.17052
+    },
+    {
+      "step": 625,
+      "loss": 3.72323
+    },
+    {
+      "step": 650,
+      "loss": 4.08329
+    },
+    {
+      "step": 675,
+      "loss": 3.51614
+    },
+    {
+      "step": 700,
+      "loss": 3.39506
+    },
+    {
+      "step": 725,
+      "loss": 3.53403
+    },
+    {
+      "step": 750,
+      "loss": 4.4191
+    },
+    {
+      "step": 775,
+      "loss": 3.53927
+    },
+    {
+      "step": 800,
+      "loss": 3.51818
+    },
+    {
+      "step": 825,
+      "loss": 3.38499
+    },
+    {
+      "step": 850,
+      "loss": 3.991
+    },
+    {
+      "step": 875,
+      "loss": 3.36654
+    },
+    {
+      "step": 900,
+      "loss": 3.82197
+    },
+    {
+      "step": 925,
+      "loss": 3.41583
+    },
+    {
+      "step": 950,
+      "loss": 3.56186
+    },
+    {
+      "step": 975,
+      "loss": 3.31447
+    },
+    {
+      "step": 1000,
+      "loss": 3.3184
+    }
+  ],
+  "vocab": 303,
+  "seq": 32,
+  "params": 19439,
+  "final_loss": 3.318399894183377,
+  "initial_loss": 5.708594098436586,
+  "train_seconds": 2.62,
+  "corpus_documents": 64,
+  "internet_documents": 3,
+  "licensed_dialogue_documents": 57,
+  "model": "C:\\Users\\13394\\Documents\\ChatGPT\\论文研究\\CHRISTUS-INTEGRATION-01\\christus_platform\\models\\local_transformer.npz",
+  "note": "auxiliary semantic encoder; not the cognitive core"
+}

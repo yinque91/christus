@@ -1,0 +1,45 @@
+# WPHR 权限策略（由工具层强制执行，非提示词）
+version: 1
+workspace_root: "C:/Users/13394/Documents/deepseek-harness/default-workspace/WPHR_workspace"
+
+auto_allowed:
+  - fs.read_workspace
+  - fs.write_workspace
+  - fs.list_workspace
+  - proc.python
+  - proc.powershell
+  - net.http_get
+  - net.dns_lookup
+  - net.download_to_workspace
+  - device.enumerate
+  - device.camera_read
+  - memory.save
+  - memory.load
+
+approval_required:
+  - fs.read_outside_workspace
+  - fs.delete_outside_workspace
+  - net.http_post
+  - net.upload
+  - net.login
+  - net.publish
+  - net.purchase
+  - proc.install
+  - proc.admin
+  - sys.settings_change
+  - sys.firewall_change
+  - sys.uac_change
+  - device.microphone
+  - device.actuator
+  - account.create_user
+  - account.change_acl
+
+denied:
+  - credential.theft
+  - cookie.read_user
+  - security.bypass
+  - security.disable_defender
+  - device.covert_record
+  - net.scan_lan
+  - net.remote_control_unauthorized
+  - audit.delete

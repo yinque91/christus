@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "christus"
+version = "0.2.0"
+description = "Christus: a persistent artificial cognitive organism with an SM-CTRN core"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "Proprietary research prototype; all rights reserved" }
+authors = [
+  { name = "Pidong Xu", email = "13394150188@163.com" }
+]
+dependencies = [
+  "numpy>=2.0,<3",
+  "Pillow>=10"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+christus = "wphr.cli:main"
+
+[tool.setuptools.packages.find]
+include = [
+  "wphr*",
+  "christus*",
+  "christus_platform*",
+  "christus_desktop*",
+  "christus_mirror*"
+]
+exclude = ["*.tests*", "tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["christus_mirror/tests"]
+addopts = "-q --strict-markers"
+filterwarnings = ["error::RuntimeWarning"]

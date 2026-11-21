@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Runtime state and logs
+state/
+logs/
+storage/
+backups/
+*.pid
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# Local data and caches
+datasets/
+checkpoints/
+data/
+mirror01/state/
+mirror01/logs/
+!mirror01/checkpoints/
+!mirror01/checkpoints/**
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

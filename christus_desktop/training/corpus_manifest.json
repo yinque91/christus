@@ -1,0 +1,13 @@
+{
+  "documents": 64,
+  "internet_documents": 3,
+  "licensed_dialogue_documents": 57,
+  "local_documents": 4,
+  "chars": 31860,
+  "licenses": [
+    "CC BY-NC-SA 4.0",
+    "CC BY-SA 4.0",
+    "project-internal"
+  ],
+  "note": "Internet documents were previously retrieved and stored with URL/license; no new uncontrolled crawl."
+}

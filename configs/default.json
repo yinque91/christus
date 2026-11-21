@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "WPHR",
+    "version": "1.0.0",
+    "spec": "MASTER SPEC 1.0"
+  },
+  "paths": {
+    "storage": "storage",
+    "checkpoints": "storage/checkpoints",
+    "backups": "storage/backups",
+    "logs": "logs",
+    "data": "data",
+    "results": "experiments/results",
+    "database": "storage/wphr.db",
+    "control": "storage/control.json",
+    "status": "storage/status.json",
+    "docs": "docs"
+  },
+  "runtime": {
+    "seed": 20261103,
+    "dt": 0.1,
+    "max_steps": 500000,
+    "checkpoint_every": 1000,
+    "status_every": 100,
+    "log_level": "INFO",
+    "console_log": false,
+    "finite_policy": "sanitize",
+    "sleep_between_steps_s": 0.0,
+    "auto_reset_episodes": true,
+    "world": "grid"
+  },
+  "core": {
+    "concept_dim": 64,
+    "concept_tau": 2.0,
+    "sparsity": 0.12,
+    "weight_scale": 0.35,
+    "weight_bound": 1.5,
+    "spectral_target": 0.95,
+    "state_bound": 4.0,
+    "activation": "tanh",
+    "modules": {
+      "world": {
+        "units": 32,
+        "tau": 1.0,
+        "input_dim": 10
+      },
+      "practice": {
+        "units": 32,
+        "tau": 1.2,
+        "input_dim": 16
+      },
+      "affect": {
+        "units": 16,
+        "tau": 3.0,
+        "input_dim": 8
+      },
+      "temporal": {
+        "units": 32,
+        "tau": 2.0,
+        "input_dim": 6
+      },
+      "concept_language": {
+        "units": 48,
+        "tau": 2.0,
+        "input_dim": 13
+      },
+      "social": {
+        "units": 16,
+        "tau": 2.5,
+        "input_dim": 8
+      },
+      "volition": {
+        "units": 24,
+        "tau": 2.0,
+        "input_dim": 8
+      }
+    }
+  },
+  "scheduler": {
+    "fast": 1,
+    "affect": 2,
+    "concept": 10,
+    "slow": 100
+  },
+  "memory": {
+    "enabled": true,
+    "working_capacity": 32,
+    "episode_max_steps": 500,
+    "db_timeout_s": 30.0,
+    "consolidate_every": 100,
+    "semantic": {
+      "staleness_tau_steps": 600.0,
+      "uncertainty_gain": 0.5,
+      "min_confidence_for_certainty": 0.6
+    },
+    "retention": {
+      "max_events": 20000,
+      "prune_on_start": false,
+      "archive_dir": "storage/archive",
+      "auto_archive_every": 0
+    }
+  },
+  "body": {
+    "radius": 0.4,
+    "energy_start": 1.0
+  },
+  "world": {
+    "id": "grid",
+    "grid": {
+      "width": 9,
+      "height": 9,
+      "wall_density": 0.18,
+      "food": 4,
+      "hazards": 3,
+      "switches_blue": 2,
+      "switches_orange": 2,
+      "tools": 1,
+      "max_steps": 400,
+      "energy_start": 1.0,
+      "energy_cost_per_step": 0.0015,
+      "move_cost": 0.001,
+      "food_energy": 0.35,
+      "hazard_penalty": 0.3,
+      "tool_reward": 0.5,
+      "agents": 0,
+      "agent_cooperation": 0.7
+    },
+    "demo": {
+      "size": 5.0,
+      "move_step": 0.5,
+      "resource_radius": 0.9,
+      "energy_start": 1.0,
+      "energy_cost_per_step": 0.0025,
+      "recharge": 0.35,
+      "relocate_on_reach": true,
+      "observation_noise": 0.02
+    }
+  },
+  "concepts": {
+    "mode": "full",
+    "max_prototypes": 16,
+    "threshold": 0.55,
+    "split_min_evidence": 3,
+    "persist_every": 100
+  },
+  "sensors": {
+    "enabled": true,
+    "vision": {
+      "enabled": true,
+      "radius": 1,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "frame": "body",
+      "units": "one_hot",
+      "provenance": "sim.vision.3x3"
+    },
+    "depth": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "cells",
+      "frame": "body",
+      "provenance": "sim.vision.depth"
+    },
+    "audio": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "mixed",
+      "frame": "world",
+      "provenance": "sim.audio.hazard_source"
+    },
+    "touch": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "mixed",
+      "frame": "body",
+      "provenance": "sim.touch.contact_array"
+    },
+    "proprioception": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "normalised",
+      "frame": "body",
+      "provenance": "sim.proprioception"
+    },
+    "vestibular": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "cells",
+      "frame": "body",
+      "provenance": "sim.vestibular"
+    },
+    "interoception": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "ratio",
+      "frame": "body",
+      "provenance": "sim.interoception"
+    },
+    "olfaction": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "normalised",
+      "frame": "world",
+      "provenance": "sim.olfaction.scent_field"
+    },
+    "gustation": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "ratio",
+      "frame": "body",
+      "provenance": "sim.gustation"
+    },
+    "spatial": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "normalised",
+      "frame": "world",
+      "provenance": "sim.spatial"
+    },
+    "temporal": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "normalised",
+      "frame": "clock",
+      "provenance": "sim.temporal"
+    },
+    "social": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "count",
+      "frame": "world",
+      "provenance": "sim.social"
+    },
+    "language": {
+      "enabled": true,
+      "noise": 0.0,
+      "latency_steps": 0,
+      "dropout": 0.0,
+      "drift": 0.0,
+      "units": "none",
+      "frame": "text",
+      "provenance": "sim.language"
+    }
+  },
+  "affect": {
+    "enabled": true,
+    "ablation": "full",
+    "channels": {
+      "curiosity": {
+        "init": 0.55,
+        "decay": 0.97,
+        "restitution": 0.04,
+        "min": 0.0,
+        "max": 1.0,
+        "max_change": 0.15
+      },
+      "risk_sensitivity": {
+        "init": 0.5,
+        "decay": 0.97,
+        "restitution": 0.03,
+        "min": 0.0,
+        "max": 1.0,
+        "max_change": 0.15
+      },
+      "frustration": {
+        "init": 0.1,
+        "decay": 0.92,
+        "restitution": 0.06,
+        "min": 0.0,
+        "max": 1.0,
+        "max_change": 0.2
+      },
+      "relief": {
+        "init": 0.2,
+        "decay": 0.9,
+        "restitution": 0.05,
+        "min": 0.0,
+        "max": 1.0,
+        "max_change": 0.2
+      },
+      "social_motivation": {
+        "init": 0.4,
+        "decay": 0.96,
+        "restitution": 0.03,
+        "min": 0.0,
+        "max": 1.0,
+        "max_change": 0.15
+      },
+      "fatigue": {
+        "init": 0.05,
+        "decay": 0.995,
+        "restitution": 0.03,
+        "min": 0.0,
+        "max": 1.0,
+        "max_change": 0.1
+      },
+      "stress_load": {
+        "init": 0.1,
+        "decay": 0.95,
+        "restitution": 0.05,
+        "min": 0.0,
+        "max": 1.0,
+        "max_change": 0.2
+      }
+    },
+    "exploration_bias": {
+      "base": 0.25,
+      "curiosity_gain": 0.35,
+      "frustration_gain": 0.2,
+      "fatigue_gain": -0.15
+    }
+  },
+  "practice": {
+    "navigation_gain": 1.2,
+    "learn_cues": true,
+    "epsilon_floor": 0.05,
+    "epsilon_ceiling": 0.9
+  },
+  "learning": {
+    "enabled": true,
+    "prediction": {
+      "lr": 0.03,
+      "weight_bound": 4.0,
+      "output_bound": 10.0
+    },
+    "hebbian": {
+      "enabled": false,
+      "lr": 0.01,
+      "weight_bound": 1.0,
+      "decay": 0.0001
+    }
+  },
+  "safety": {
+    "real_camera": false,
+    "real_microphone": false,
+    "screen_capture": false,
+    "keyboard_capture": false,
+    "network_access": false,
+    "private_files": false,
+    "robot_actuators": false,
+    "paid_services": false,
+    "sandbox_root": "data/sandbox",
+    "max_wall_clock_s": 86400,
+    "allowed_actions": [
+      "move_north",
+      "move_east",
+      "move_south",
+      "move_west",
+      "interact",
+      "wait"
+    ]
+  },
+  "language": {
+    "enabled": true,
+    "teacher_enabled": false,
+    "teach_every": 25,
+    "reliability": 0.7,
+    "prior_weight": 1.5,
+    "produce_every": 50,
+    "vocab": {
+      "switch_blue": "blue",
+      "switch_orange": "orange"
+    }
+  },
+  "social": {
+    "mode": "transition",
+    "trust_lr": 0.1
+  },
+  "planning": {
+    "enabled": false,
+    "max_plan_length": 4,
+    "max_failures": 3,
+    "goals": [
+      "recharge",
+      "rest",
+      "consolidate"
+    ]
+  },
+  "modules": {
+    "disabled": []
+  }
+}

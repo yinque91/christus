@@ -1,0 +1,10 @@
+state/*.db
+state/*.db-*
+state/subject/
+state/server.pid
+backups/
+__pycache__/
+tests/__pycache__/
+logs/server*.log
+state/
+

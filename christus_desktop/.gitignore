@@ -1,0 +1,6 @@
+state/
+logs/desktop.*.log
+logs/train_transformer.*.log
+logs/smoke.log
+__pycache__/
+tests/__pycache__/

@@ -1,0 +1,40 @@
+{
+  "project": "CHRISTUS-MIRROR-01",
+  "seeds": [12000, 12001, 12002, 12003, 12004, 12005, 12006, 12007, 12008, 12009,
+            12010, 12011, 12012, 12013, 12014, 12015, 12016, 12017, 12018, 12019],
+  "environment": {
+    "type": "2D rendered mirror with virtual body and body sensors",
+    "actions": ["head_left", "head_right", "hand_left", "hand_right",
+                "turn_left", "turn_right", "step_left", "step_right",
+                "look_mirror", "look_away", "touch_forehead",
+                "touch_left_hand", "touch_right_hand"],
+    "marker_locations": ["forehead", "left_hand", "right_hand"],
+    "mirror_conditions": ["realtime", "delay_0.5", "delay_2", "other", "none"],
+    "first_person_marker_visible": false,
+    "condition_labels_to_subject": false,
+    "ground_truth_to_subject": false
+  },
+  "experiments": {
+    "M1_steps": 30,
+    "M2_steps": 25,
+    "M3_warmup": 25,
+    "M3_marker_steps": 25,
+    "M4_modes": ["none", "mirror_only", "other_agent", "real", "unseen"],
+    "M5_geometries": {"angle": 0.35, "scale": 0.75, "lighting": 0.7, "body_scale": 1.15}
+  },
+  "conditions": {
+    "A0": "no mirror; base Subject action policy",
+    "A1": "mirror only; no body inspection module",
+    "A2": "mirror + body schema inspection",
+    "A3": "A2 + self-prediction flag",
+    "A4": "A3 with shuffled action-visual temporal correspondence",
+    "A5": "A3 without body sensor feedback"
+  },
+  "constraints": {
+    "one_subject_per_run": true,
+    "w_p_q_modified": false,
+    "external_llm_used": false,
+    "answers_given_to_subject": false,
+    "web_server": false
+  }
+}

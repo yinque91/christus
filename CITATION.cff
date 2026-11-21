@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the manuscript and this software record."
+title: "Christus: a persistent artificial cognitive organism"
+abstract: >-
+  Christus is a persistent artificial cognitive architecture integrating a
+  recurrent SM-CTRN core, embodied action, experience provenance,
+  autobiographical memory, affective regulation and self-related representation.
+  The mirror-guided hidden-marker experiment passed in 20/20 seeds.
+authors:
+  - family-names: "Xu"
+    given-names: "Pidong"
+    affiliation: "School of Materials Science and Engineering, East China University of Technology, Nanchang, Jiangxi 330013, China"
+    email: "13394150188@163.com"
+  - name: "Christus Project"
+version: "0.2.0"
+date-released: "2026-11-21"
+license: "Proprietary"
+repository-code: "https://github.com/yinque91/christus"
+keywords:
+  - artificial intelligence
+  - artificial consciousness
+  - recurrent neural networks
+  - autobiographical memory
+  - mirror self-recognition
+  - embodied cognition

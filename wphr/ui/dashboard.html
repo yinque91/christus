@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WPHR — 数字主体观察台</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.5 "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+         background: #0f1115; color: #d8dee9; }
+  header { padding: 14px 20px; background: #161a22; border-bottom: 1px solid #232936;
+           display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap; }
+  header h1 { font-size: 17px; margin: 0; font-weight: 600; letter-spacing: .3px; }
+  header .meta { color: #7d879c; font-size: 12px; }
+  main { padding: 16px 20px 40px; display: grid; gap: 14px;
+         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  section { background: #161a22; border: 1px solid #232936; border-radius: 8px; padding: 12px 14px; }
+  section h2 { font-size: 13px; margin: 0 0 10px; color: #9aa5bb; font-weight: 600;
+               text-transform: uppercase; letter-spacing: .6px; }
+  pre { margin: 0; font: 12px/1.35 "Cascadia Mono", Consolas, monospace; white-space: pre; overflow-x: auto; }
+  .grid { color: #8fd6a0; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { text-align: left; padding: 3px 6px; border-bottom: 1px solid #202634; }
+  th { color: #7d879c; font-weight: 500; }
+  .bar { height: 6px; background: #232936; border-radius: 3px; overflow: hidden; margin-top: 3px; }
+  .bar > i { display: block; height: 100%; background: #4c7ef3; }
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 11px;
+          background: #23304a; color: #93b4ff; }
+  .ok { color: #6fcf97; } .warn { color: #f2c94c; } .bad { color: #eb5757; }
+  .muted { color: #7d879c; }
+  .kv { display: flex; justify-content: space-between; gap: 10px; padding: 2px 0; }
+  .kv span:last-child { color: #b9c4d8; font-variant-numeric: tabular-nums; }
+  footer { padding: 10px 20px 24px; color: #5f6a7d; font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>WPHR 数字主体观察台</h1>
+  <span class="meta" id="meta">loading…</span>
+  <span class="meta" style="margin-left:auto">只读 · 仅回环地址 · 每 2 秒刷新</span>
+</header>
+<main>
+  <section><h2>世界</h2><div id="world" class="grid"></div>
+    <div id="worldinfo" class="muted" style="margin-top:8px"></div></section>
+  <section><h2>主体状态</h2><div id="subject"></div></section>
+  <section><h2>情绪通道</h2><div id="affect"></div></section>
+  <section><h2>传感器</h2><div id="sensors"></div></section>
+  <section><h2>模块健康</h2><div id="modules"></div></section>
+  <section><h2>记忆分层</h2><div id="memory"></div></section>
+  <section><h2>概念信念</h2><div id="concepts"></div></section>
+  <section><h2>语义规则</h2><div id="rules"></div></section>
+  <section><h2>最近事件</h2><div id="events"></div></section>
+</main>
+<footer id="footer"></footer>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const num = (v, d=3) => (typeof v === "number" ? v.toFixed(d) : (v ?? "—"));
+
+async function tick() {
+  let data, events;
+  try {
+    [data, events] = await Promise.all([
+      fetch("/api/state").then(r => r.json()),
+      fetch("/api/events?limit=12").then(r => r.json()),
+    ]);
+  } catch (e) {
+    $("meta").textContent = "无法连接 UI 服务";
+    return;
+  }
+  const snap = data.snapshot || {};
+  $("meta").textContent = `v${data.version} · config ${String(data.config_hash).slice(0,12)} · step ${snap.step ?? "—"}`;
+  $("footer").textContent = snap.written_at ? `状态快照时间 ${snap.written_at}` : "尚无状态快照：先运行 wphr run";
+
+  // world
+  const w = data.world;
+  if (w) {
+    $("world").textContent = w.ascii.join("\n");
+    $("worldinfo").textContent = `地图 ${w.map_id} · 位置 (${w.body.x},${w.body.y}) 朝向 ${w.body.heading} · 能量 ${w.body.energy} · 本幕奖励 ${w.episode_reward}`;
+  } else {
+    $("world").textContent = "（还没有检查点，无法显示地图）";
+    $("worldinfo").textContent = "";
+  }
+
+  // subject
+  const core = snap.core || {};
+  $("subject").innerHTML = [
+    ["step", snap.step], ["仿真时间", num(snap.sim_time,2)], ["世界", snap.world],
+    ["目标", snap.goal], ["动作", snap.action], ["概念数", snap.concepts],
+    ["认知核心状态范数", num(core.h_norm)], ["谱半径", num(core.spectral_radius,4)],
+    ["数值故障", core.faults], ["整体健康", snap.overall_status],
+  ].map(([k,v]) => `<div class="kv"><span>${esc(k)}</span><span>${esc(num(v))}</span></div>`).join("");
+
+  // affect
+  const aff = snap.affect || {};
+  $("affect").innerHTML = Object.keys(aff).sort().map(k =>
+    `<div class="kv"><span>${esc(k)}</span><span>${num(aff[k])}</span></div>
+     <div class="bar"><i style="width:${Math.max(0,Math.min(100, aff[k]*100))}%"></i></div>`
+  ).join("") || '<span class="muted">无数据</span>';
+
+  // sensors
+  const sensors = snap.sensors || {};
+  if (sensors.enabled === false) {
+    $("sensors").innerHTML = '<span class="muted">未启用</span>';
+  } else {
+    const rows = (sensors.health || []).map(h =>
+      `<tr><td>${esc(h.sensor_id)}</td><td class="${h.status==="OK"?"ok":(h.status==="DEGRADED"?"warn":"bad")}">${esc(h.status)}</td>
+       <td>${h.samples}</td><td>${h.invalid}</td></tr>`).join("");
+    $("sensors").innerHTML =
+      `<div class="kv"><span>整体</span><span>${esc(sensors.overall)}</span></div>
+       <table><thead><tr><th>通道</th><th>状态</th><th>采样</th><th>无效</th></tr></thead><tbody>${rows}</tbody></table>`;
+  }
+
+  // modules
+  const mods = snap.modules || [];
+  $("modules").innerHTML = `<table><thead><tr><th>模块</th><th>状态</th></tr></thead><tbody>` +
+    mods.map(m => `<tr><td>${esc(m.module)}</td><td class="${m.status==="OK"?"ok":"warn"}">${esc(m.status)}</td></tr>`).join("") +
+    "</tbody></table>";
+
+  // memory
+  const layers = data.memory_layers || {};
+  $("memory").innerHTML = Object.keys(layers).length
+    ? Object.keys(layers).sort().map(k => `<div class="kv"><span>${esc(k)}</span><span>${layers[k]}</span></div>`).join("")
+    : '<span class="muted">尚未巩固任何记忆</span>';
+
+  // concepts
+  const stats = (snap.concept_stats) || null;
+  const beliefs = (data.concept_beliefs) || null;
+  $("concepts").innerHTML = (stats ? `<div class="kv"><span>节点</span><span>${stats.nodes}</span></div>
+     <div class="kv"><span>干预证据</span><span>${stats.interventions}</span></div>
+     <div class="kv"><span>拆分</span><span>${stats.splits}</span></div>
+     <div class="kv"><span>修订</span><span>${stats.revisions}</span></div>` : "") +
+     (beliefs ? Object.keys(beliefs).map(k => `<div class="kv"><span>${esc(k)}</span><span>${num(beliefs[k])}</span></div>`).join("") : '<span class="muted">（概念数据随检查点保存）</span>');
+
+  // semantic rules
+  const rules = data.semantic_rules || [];
+  $("rules").innerHTML = rules.length ? `<table><thead><tr><th>规则</th><th>置信度</th><th>支持/反例</th></tr></thead><tbody>` +
+    rules.map(r => `<tr><td>${esc(r.key)}</td><td>${num(r.confidence)}</td><td>${r.support_count}/${r.counter_count}</td></tr>`).join("") +
+    "</tbody></table>" : '<span class="muted">尚未写入语义规则</span>';
+
+  // events
+  $("events").innerHTML = `<table><thead><tr><th>步</th><th>类型</th><th>动作</th><th>误差</th></tr></thead><tbody>` +
+    (events || []).slice().reverse().map(e => `<tr>
+      <td>${e.step}</td><td>${esc(e.event_type)}</td>
+      <td>${esc((e.action||{}).name||"")}</td>
+      <td>${e.prediction_error===null||e.prediction_error===undefined?"":num(e.prediction_error,4)}</td></tr>`).join("") +
+    "</tbody></table>";
+}
+tick();
+setInterval(tick, 2000);
+</script>
+</body>
+</html>

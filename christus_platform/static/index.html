@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christus</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="mark">C</div><div><b>Christus</b><small>持续运行的主体</small></div></div>
+    <div class="statusline"><span class="dot" id="dot"></span><span id="statusText">正在连接…</span></div>
+    <button class="newchat" id="newChat">＋ 新对话</button>
+    <nav class="nav">
+      <button class="active" data-view="chat">◌ 交流</button>
+      <button data-view="state">◈ 主体状态</button>
+      <button data-view="history">⌁ 自身历史</button>
+      <button data-view="learning">▤ 学习</button>
+      <button data-view="web">◎ 网络信息</button>
+      <button data-view="settings">⚙ 系统</button>
+    </nav>
+    <div class="historyLabel">历史</div>
+    <div id="sessionList" class="sessionList"></div>
+    <div class="sidebarFoot">本地运行 · 非外部大模型替身<br><span id="langSource">language: —</span></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><h1 id="viewTitle">交流</h1><p id="viewSub">和同一个持续主体对话</p></div>
+      <div class="topActions">
+        <span class="pill" id="subjectPill">subject —</span>
+        <button class="ghost" id="checkpointBtn">保存检查点</button>
+      </div>
+    </header>
+
+    <section class="view active" id="view-chat">
+      <div class="chat" id="chat">
+        <div class="welcome" id="welcome">
+          <div class="bigmark">C</div>
+          <h2>Christus 在这里。</h2>
+          <p>消息会经过现有 Subject、SM-CTRN、记忆、情绪与概念模块；语言输出由本地语言接口生成。外部知识会标注来源，不会写成亲身经历。</p>
+          <div class="suggestions">
+            <button data-suggest="你好，介绍一下你现在的状态">介绍一下你</button>
+            <button data-suggest="帮我查一下维基百科上的量子力学">查公开资料</button>
+            <button data-suggest="请记住：我在做 Christus 的主体整合研究">记住一件事</button>
+            <button data-suggest="你记得我们刚才说了什么吗？">检索刚才的对话</button>
+          </div>
+        </div>
+        <div id="messages"></div>
+      </div>
+      <div class="composerWrap">
+        <div class="composer">
+          <button class="tool" title="记忆检索">⌁</button>
+          <textarea id="input" rows="1" placeholder="输入消息…  Enter 发送，Shift+Enter 换行"></textarea>
+          <button class="send" id="send" title="发送">↑</button>
+        </div>
+        <div class="hint"><span id="turnHint">0 turns</span><span>本地主体 · 会记录经验来源</span></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-state">
+      <div class="grid">
+        <div class="card"><div class="cardLabel">SUBJECT</div><div class="big" id="stStep">—</div><div class="muted">认知步</div><div class="kv" id="stSubject"></div></div>
+        <div class="card"><div class="cardLabel">COGNITIVE CORE</div><div class="big" id="stH">—</div><div class="muted">h 范数</div><div class="kv" id="stCore"></div></div>
+        <div class="card"><div class="cardLabel">AFFECT</div><div id="stAffect" class="bars"></div></div>
+        <div class="card"><div class="cardLabel">MEMORY</div><div class="kv" id="stMemory"></div></div>
+        <div class="card wide"><div class="cardLabel">CONCEPT / LANGUAGE</div><div class="kv" id="stConcept"></div></div>
+        <div class="card wide"><div class="cardLabel">SELF MODEL (SELF-03, OFFLINE)</div><div class="kv" id="stSelf"></div></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-history">
+      <div class="panel"><div class="panelHead"><h2>自身历史</h2><span class="muted">会话与经验来源</span></div><div id="historyBody" class="list"></div></div>
+    </section>
+
+    <section class="view" id="view-learning">
+      <div class="panel"><div class="panelHead"><h2>学习记录</h2><button class="ghost" id="pauseBtn">暂停学习</button></div><div id="learningBody" class="list"></div></div>
+    </section>
+
+    <section class="view" id="view-web">
+      <div class="panel"><div class="panelHead"><h2>网络信息</h2><span class="muted">Wikipedia / DuckDuckGo · 保留来源与许可</span></div><div id="knowledgeBody" class="list"></div></div>
+    </section>
+
+    <section class="view" id="view-settings">
+      <div class="grid">
+        <div class="card wide"><div class="cardLabel">RUNTIME</div><div class="kv" id="settingsBody"></div></div>
+        <div class="card wide"><div class="cardLabel">DATA & SAFETY</div><p class="prose">默认只访问公开知识源；不发送外部消息、不发布内容、不绕过登录/付费墙。外部语言桥未配置时，语言由本地状态接口生成，不会冒充外部大模型。所有外部知识都作为“外部来源”记录，不写入亲身经历。</p><div class="row"><button class="ghost" id="backupBtn">备份数据</button><button class="ghost" id="refreshBtn">刷新状态</button></div></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>

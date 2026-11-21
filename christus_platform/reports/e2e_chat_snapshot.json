@@ -1,0 +1,113 @@
+{
+  "sid": "s-e9dc5490d288",
+  "chat": {
+    "reply": "我刚刚查阅了公开资料（wikipedia）。\n\n**量子力学**\n\n量子力学 是物理學的分支學科。它描述原子尺度及原子尺度以下的自然行為和规律。 它是所有量子物理學的基礎，包括量子化學、量子場論、量子技術和量子信息科学。\n\n来源：https://zh.wikipedia.org/wiki/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6\n许可：CC BY-SA 4.0。这是外部知识，不是我的亲身经历；我保留来源和不确定性。",
+    "session_id": "s-e9dc5490d288",
+    "source": "knowledge+local-language",
+    "citations": [
+      {
+        "title": "量子力学",
+        "url": "https://zh.wikipedia.org/wiki/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "title": "相对论量子力学",
+        "url": "https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%AF%B9%E8%AE%BA%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "title": "量子力學入門",
+        "url": "https://zh.wikipedia.org/wiki/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%B8%E5%85%A5%E9%96%80",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "state": {
+      "subject_id": "subj_61033c149f9e459f9abdbb1bbc35b9e1",
+      "step": 5,
+      "turns": 3,
+      "h_norm": 0.568606,
+      "action": "request",
+      "reward": 0.0,
+      "affect": {
+        "curiosity": 0.480974,
+        "fatigue": 0.053778,
+        "frustration": 0.091709,
+        "relief": 0.128836,
+        "risk_sensitivity": 0.435356,
+        "social_motivation": 0.332368,
+        "stress_load": 0.080451
+      },
+      "memory": {
+        "enabled": true,
+        "semantic_contexts": 2,
+        "semantic_rules": 4,
+        "revisions": 0,
+        "consolidations": 0,
+        "summaries": 0,
+        "working_items": 5,
+        "records_written": 0
+      },
+      "concept": {
+        "steps": 5,
+        "events_seen": 15,
+        "concept_nodes": 2,
+        "interventions": 5,
+        "splits": 0,
+        "revisions": 0,
+        "claims": 0,
+        "productions": 0,
+        "words": 0
+      },
+      "self_model": {
+        "available": true,
+        "mode": "A3 offline checkpoint",
+        "source_probe": 0.5685,
+        "temporal": 0.40704735246775997,
+        "note": "offline SELF-03 model; not on the language path"
+      },
+      "language_source": "local-state-language-v1",
+      "paused": false,
+      "started_at": 1795005715.9398665,
+      "last_checkpoint": {
+        "path": "C:\\Users\\13394\\Documents\\ChatGPT\\论文研究\\CHRISTUS-INTEGRATION-01\\christus_platform\\state\\subject\\storage\\checkpoints\\ckpt_1795005729_00000004_9c6acf81.npz",
+        "sha256": "e61b30f126f80309f2b2d0c32602b7b9b10af35daf4e84c08956ab85e928abd5",
+        "step": 4
+      },
+      "core_weights_unchanged": true,
+      "w_p_q_note": "W/P/Q not updated by the platform; DataAdapter only reads core state."
+    },
+    "knowledge": {
+      "ok": true,
+      "items": [
+        {
+          "title": "量子力学",
+          "url": "https://zh.wikipedia.org/wiki/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6",
+          "summary": "量子力学 是物理學的分支學科。它描述原子尺度及原子尺度以下的自然行為和规律。 它是所有量子物理學的基礎，包括量子化學、量子場論、量子技術和量子信息科学。",
+          "snippet": "量子力学 （quantum mechanics）是物理學的分支學科。它描述原子尺度及原子尺度以下的自然行為和规律。 它是所有量子物理學的基礎，包括量子化學、量子場論、量子技術和量子信息科学。 量子力学 与相对论一起被认为是现代物理学的两大基本支柱。19世紀末，人們發現舊有的經典理論無法解釋微观系统，於",
+          "license": "CC BY-SA 4.0",
+          "trust": "encyclopedia; cross-check needed",
+          "lang": "zh"
+        },
+        {
+          "title": "相对论量子力学",
+          "url": "https://zh.wikipedia.org/wiki/%E7%9B%B8%E5%AF%B9%E8%AE%BA%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6",
+          "summary": "在物理学中，相对论量子力学是将量子力学与狭义相对论相结合的量子力学理论。传统的非相对论量子力学只适用于低速运动的粒子，相对论量子力学则适用于以任何速度传播的粒子，包括以接近光速 c 运动的粒子。它也可以描述无质量粒子。该理论可应用于高能物理 、粒子物理和加速器物理学以及原子物理、化学、凝聚态物理。相对论量子力学具有庞加莱协变形式，而非相对论量子力学具有伽利略不变性。",
+          "snippet": "在物理学中，相对论 量子力学 是将 量子力学 与狭义相对论相结合的 量子力学 理论。传统的非相对论 量子力学 只适用于低速运动的粒子，相对论 量子力学 则适用于以任何速度传播的粒子，包括以接近光速 c 运动的粒子。它也可以描述无质量粒子。该理论可应用于高能物理 、粒子物理和加速器物理学以及原子物理、化学、凝聚态物理 。相对论 量子力学",
+          "license": "CC BY-SA 4.0",
+          "trust": "encyclopedia; cross-check needed",
+          "lang": "zh"
+        },
+        {
+          "title": "量子力學入門",
+          "url": "https://zh.wikipedia.org/wiki/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%B8%E5%85%A5%E9%96%80",
+          "summary": "量子力学 是描述微观物质（原子、亚原子粒子）行为的物理学理论，量子力学是我们理解除万有引力之外的所有基本力（电磁相互作用、强相互作用、弱相互作用）的基础。",
+          "snippet": "量子力学 （英語：quantum mechanics；或称量子论）是描述微观物质（原子、亚原子粒子）行为的物理学理论， 量子力学 是我们理解除万有引力之外的所有基本力（电磁相互作用、强相互作用、弱相互作用）的基础。 量子力学 是许多物理学分支的基础，包括电磁学、粒子物理、凝聚态物理以及宇宙学的部分内容。量",
+          "license": "CC BY-SA 4.0",
+          "trust": "encyclopedia; cross-check needed",
+          "lang": "zh"
+        }
+      ],
+      "error": null
+    }
+  }
+}
