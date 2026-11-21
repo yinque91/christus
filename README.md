@@ -6,7 +6,7 @@ representation and affective regulation. It is built around a Sparse Modular
 Continuous-Time Recurrent Neural Network (SM-CTRN), not a Transformer language model;
 a small local Transformer is used only as an auxiliary semantic reranker.
 
-> **Repository status:** private research archive. The manuscript is not yet
+> **Repository status:** public research archive. The manuscript is not yet
 > peer-reviewed. The code is a research prototype, not a production product.
 
 ![Christus architecture](figures/NATURE_FIG1_architecture.png)
@@ -105,7 +105,7 @@ The repository contains:
 
 Raw state databases, session logs and caches are intentionally excluded. The
 mirror result file in this repository is a curated summary; the original run
-directory remains in the private research archive.
+directory is retained separately by the author.
 
 ## Manuscript
 
