@@ -27,6 +27,8 @@ checkpoints/
 data/
 mirror01/state/
 mirror01/logs/
+.christus_autonomy/
+autonomy_state/
 !mirror01/checkpoints/
 !mirror01/checkpoints/**
 

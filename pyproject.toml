@@ -29,7 +29,8 @@ include = [
   "christus*",
   "christus_platform*",
   "christus_desktop*",
-  "christus_mirror*"
+  "christus_mirror*",
+  "christus_autonomy*"
 ]
 exclude = ["*.tests*", "tests*"]
 

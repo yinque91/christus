@@ -1,0 +1,54 @@
+{
+  "allowed_processes": [
+    "notepad.exe",
+    "explorer.exe",
+    "chrome.exe",
+    "msedge.exe",
+    "firefox.exe",
+    "Code.exe",
+    "WINWORD.EXE",
+    "EXCEL.EXE",
+    "POWERPNT.EXE",
+    "ApplicationFrameHost.exe"
+  ],
+  "allowed_launch": [
+    "notepad.exe",
+    "calc.exe",
+    "mspaint.exe",
+    "explorer.exe",
+    "chrome.exe",
+    "msedge.exe",
+    "Code.exe"
+  ],
+  "blocked_processes": [
+    "cmd.exe",
+    "powershell.exe",
+    "pwsh.exe",
+    "regedit.exe",
+    "taskmgr.exe",
+    "mmc.exe"
+  ],
+  "blocked_titles": [
+    "password",
+    "passwd",
+    "login",
+    "sign in",
+    "bank",
+    "payment",
+    "wallet",
+    "control panel",
+    "settings",
+    "registry",
+    "task manager"
+  ],
+  "blocked_shortcuts": [
+    "alt+f4",
+    "ctrl+shift+esc",
+    "win+r",
+    "win+x",
+    "ctrl+alt+delete"
+  ],
+  "max_actions_per_minute": 90,
+  "allow_admin": false,
+  "emergency_hotkey": "ctrl+alt+shift+q"
+}

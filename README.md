@@ -19,6 +19,7 @@ a small local Transformer is used only as an auxiliary semantic reranker.
 | Integrated subject | `christus/` — event/coordination/readout integration layer |
 | Desktop platform | `christus_desktop/`, `christus_platform/` — native Tkinter application and local runtime |
 | Mirror experiment | `christus_mirror/`, `mirror01/` — two-dimensional mirror world and 20-seed protocol |
+| Desktop autonomy | `christus_autonomy/` — persistent observation, permissioned mouse/keyboard control, audit and emergency stop |
 | Manuscript | `manuscripts/` — arXiv-style and Nature-style PDFs, Markdown source |
 | Figures | `figures/` — 300 dpi research figures |
 | Research notes | `docs/` — architecture, SELF-01–03, CORE-READOUT, mirror design and reproducibility notes |
@@ -71,6 +72,41 @@ Tkinter:
 ```powershell
 python christus_mirror\lab_app.py
 ```
+
+## Autonomous desktop control
+
+`christus_autonomy/` is the persistent, permissioned desktop substrate:
+
+- observes the foreground window continuously;
+- records experience and window-transition novelty;
+- exposes real Windows mouse/keyboard control through `SendInput`;
+- checks every action against an allowlist, sensitive-title blocklist, rate limit
+  and emergency stop;
+- drains an action queue in `control` mode.
+
+```powershell
+# Observe-only, persistent
+python -m christus_autonomy.cli start --mode observe
+
+# Control mode: drains the allowlist-checked action queue
+python -m christus_autonomy.cli start --mode control
+
+# Immediate action (dry-run first)
+python -m christus_autonomy.cli act --dry-run click 500 300
+python -m christus_autonomy.cli act click 500 300
+python -m christus_autonomy.cli act type "hello"
+python -m christus_autonomy.cli act hotkey ctrl+s
+
+# Status / emergency stop
+python -m christus_autonomy.cli status
+python -m christus_autonomy.cli stop
+```
+
+Emergency stop: **Ctrl+Alt+Shift+Q**. The default policy allows common
+applications and blocks password/login/banking/system surfaces. It does not run as
+administrator. Launch helpers: `scripts\START_AUTONOMY_OBSERVE.bat` and
+`scripts\START_AUTONOMY_CONTROL.bat`. See
+[christus_autonomy/README.md](christus_autonomy/README.md).
 
 ## Architecture
 
